@@ -2,6 +2,9 @@
 
 # Ignore node_modules folder
 node_modules/
+client/node_modules
+client/README.md
+
 
 # Ignore log files
 npm-debug.log*
