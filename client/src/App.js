@@ -1,13 +1,9 @@
-import './App.css';
-import { useState } from "react";
+import Message from './pages/Home/home';
 
 function App() {
-  const [listOfUsers, setListOfUsers] = useState([])
   return (
     <div className="App">
-      <header className="App-header">
-        <h2>Home page will go here!</h2>
-      </header>
+      <Message />
     </div>
   );
 }
