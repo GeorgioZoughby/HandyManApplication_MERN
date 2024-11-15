@@ -1,9 +1,14 @@
-import Message from './pages/Home/home';
+import Sidebar from './pages/Sidebar/Sidebar';
+import Footer from './pages/Footer/Footer';
+import Example from './pages/SlideShow/SlideShow';
+
 
 function App() {
   return (
     <div className="App">
-      <Message />
+      <Sidebar />
+      <Example />
+      <Footer />
     </div>
   );
 }
