@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'react-slideshow-image/dist/styles.css'
+import "bootstrap-icons/font/bootstrap-icons.css";
+import '@fontsource/poppins';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
