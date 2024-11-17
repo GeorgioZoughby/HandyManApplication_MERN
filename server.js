@@ -8,6 +8,7 @@ const serviceRoutes = require('./backend/routes/services');
 const bookingRoutes = require('./backend/routes/bookings');
 const reviewRoutes = require('./backend/routes/reviews');
 const categoryRoutes = require('./backend/routes/categories');
+const searchRoutes = require('./backend/routes/search');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -29,6 +30,7 @@ app.use('/api/services', serviceRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/categories', categoryRoutes);
+app.use('/api/search', searchRoutes);
 
 
 
