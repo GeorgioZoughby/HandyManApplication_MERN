@@ -26,7 +26,10 @@
 .services-item:hover {
     color: #b5b5b5;
     transition: all 100ms ease;
+}
 
+.services-item.active {
+    color: #ee6231;
 }
 
 .services-item i {
