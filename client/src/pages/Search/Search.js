@@ -5,7 +5,7 @@ const SearchBar = () => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
-    let activeFetchId = 0; // Unique identifier for fetch calls
+    let activeFetchId = 0;
 
     const handleSearch = async (event) => {
         const value = event.target.value;
@@ -16,7 +16,7 @@ const SearchBar = () => {
             return;
         }
 
-        const currentFetchId = ++activeFetchId; // Increment fetch ID for this call
+        const currentFetchId = ++activeFetchId;
 
         try {
             setLoading(true);
@@ -26,14 +26,12 @@ const SearchBar = () => {
             }
             const data = await response.json();
 
-            // Only update results if this is the latest fetch call
-            if (currentFetchId === activeFetchId) {
+            if (currentFetchId === activeFetchId && value.trim() !== '') {
                 setResults(data);
             }
         } catch (error) {
             console.error('Error fetching search results:', error);
         } finally {
-            // Only clear loading state if this is the latest fetch call
             if (currentFetchId === activeFetchId) {
                 setLoading(false);
             }
@@ -49,7 +47,7 @@ const SearchBar = () => {
                 className="search-input"
                 onChange={handleSearch}
             />
-            {results.length > 0 && (
+            {results.length > 0 && query.trim() !== '' && (
                 <ul className="search-results" style={{ listStyleType: 'none' }}>
                     {results.map((result) => (
                         <a href="#" key={result._id} onClick={() => setQuery(result.name)}>

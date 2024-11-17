@@ -4,7 +4,7 @@ import "./Footer.css";
 
 const Footer = () => {
     return (
-        <footer className="relative z-10 bg-black pb-10 pt-20 dark:bg-dark lg:pb-20 lg:pt-[120px]">
+        <footer className="footer relative z-10  pb-10 pt-20 dark:bg-dark lg:pb-20 lg:pt-[120px]">
             <div className="container mx-auto px-4">
                 <div className="flex flex-wrap justify-between">
                     <div className="w-full mb-8 px-4 sm:w-1/2 lg:w-1/4">
