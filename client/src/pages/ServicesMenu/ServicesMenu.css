@@ -1,0 +1,35 @@
+.services-menu {
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.services-list {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+    gap: 50px;
+    border-bottom: 1px solid #524C42;
+}
+
+.services-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    color: #524C42;
+}
+
+.services-item:hover {
+    color: #b5b5b5;
+    transition: all 100ms ease;
+}
+
+.services-item i {
+    font-size: 3rem;
+}
+
+.services-item span {
+    font-size: 1.2rem;
+}

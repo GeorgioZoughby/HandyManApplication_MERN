@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+import ServicesMenu from "../ServicesMenu/ServicesMenu"
 
 const Home = () => {
     return (
@@ -13,8 +14,8 @@ const Home = () => {
                     <button className="search-button" type="text"><i className="bi bi-search"></i></button>
                 </div>
             </div>
-
-        </div >
+            <ServicesMenu />
+        </div>
     );
 }
 
