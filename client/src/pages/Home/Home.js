@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import ServicesMenu from "../ServicesMenu/ServicesMenu"
+import Categories from "../Categories/Categories"
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
                 </div>
             </div>
             <ServicesMenu />
+            <Categories />
         </div>
     );
 }
