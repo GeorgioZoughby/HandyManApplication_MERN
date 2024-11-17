@@ -31,16 +31,18 @@ const ServicesMenu = () => {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div className="services-menu">
-            <ul className="services-list">
-                {services.map((service) => (
-                    <li className="services-item" key={service._id}>
-                        <i className={`${service.service_icon}`}></i>
-                        <span>{service.service_name}</span>
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <>
+            <div className="services-menu">
+                <ul className="services-list">
+                    {services.map((service) => (
+                        <li className="services-item" key={service._id}>
+                            <i className={`${service.service_icon}`}></i>
+                            <span>{service.service_name}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </>
     );
 };
 

@@ -1,5 +1,5 @@
 const express = require('express');
-const User = require('../models/Service');
+const Service = require('../models/Service');
 
 const router = express.Router();
 
@@ -19,7 +19,6 @@ router.post('/', async (req, res) => {
   await service.save();
   res.status(201).json(service);
 });
-
 router.delete('/:id', async (req, res) => {
   const service = await Service.findByIdAndDelete(req.params.id);
   if (!service) return res.status(404).json({ message: 'Service not found' });

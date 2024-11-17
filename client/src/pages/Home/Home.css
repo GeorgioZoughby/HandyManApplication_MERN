@@ -9,7 +9,7 @@
     font-size: 3rem;
     font-weight: 1000;
     color: #524C42;
-    margin-top: 2rem;
+    margin-top: 4rem;
     width: 500px;
     text-wrap: wrap;
     text-align: center;
@@ -27,7 +27,6 @@
     border-radius: 40px;
     width: fit-content;
     padding: 0px 0px 0px 1px;
-    margin-bottom: 2rem;
 }
 
 .search-input {
