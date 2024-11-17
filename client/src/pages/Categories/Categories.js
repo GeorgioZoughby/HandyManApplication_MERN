@@ -8,6 +8,9 @@ const Categories = () => {
         "Crib Assembly",
         "PAX Assembly",
         "Bookshelf Assembly",
+        "Desk Assembly",
+        "PAX Assembly",
+        "Bookshelf Assembly",
         "Desk Assembly"
     ];
 
