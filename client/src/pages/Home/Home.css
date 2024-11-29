@@ -1,4 +1,4 @@
-.center {
+.center-container {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -8,9 +8,9 @@
 .title {
     font-size: 3rem;
     font-weight: 1000;
-    color: #524C42;
+    color: var(--green);
     margin-top: 4rem;
-    width: 500px;
+    width: 600px;
     text-wrap: wrap;
     text-align: center;
 }

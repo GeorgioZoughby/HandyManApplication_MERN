@@ -1,7 +1,7 @@
 .sidebar {
     width: 100vw;
     height: 100px;
-    background-color: #343131;
+    background-color: #171616;
     color: white;
     display: flex;
     align-items: center;
@@ -16,40 +16,60 @@
     border-radius: 50%;
 }
 
+.sidebar-logo:hover {
+    opacity: 90%;
+}
+
 .sidebar-list {
     list-style-type: none;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    gap: 60px;
 }
 
 .sidebar-list li {
-    padding: 10px 20px;
+    display: flex;
     cursor: pointer;
     font-size: 1.2rem;
+    gap:7px;
 }
 
 .sidebar-list li:hover {
-    color: #ffb77d;
+    color: var(--middle-green);
     border-radius: 5px;
 }
 
-.sidebar-user {
+.sidebar-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-right: 2rem;
+    gap: 20px;
+    margin-right: 1rem;
 }
 
-.sidebar-user img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-.sidebar-user span {
+.sidebar-actions button {
     font-size: 1rem;
-    font-weight: bold;
+    font-weight: 600;
 }
+
+
+
+#cta-button{
+    color: var(--light-green);
+    border: 1px solid var(--light-green);
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+#cta-button:hover{
+    background-color: var(--light-green);
+    color: white;
+}
+
+#login-button:hover{
+    text-decoration: underline;
+}
+

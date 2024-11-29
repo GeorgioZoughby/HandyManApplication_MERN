@@ -1,0 +1,90 @@
+.login-container {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    height: 100vh;
+    padding: 0 24px;
+    background-image: url('../../assets/login.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    color: #f9f9f9;
+}
+
+.center-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-card{
+    height: 60vh;
+    width: 25vw;
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.card-header{
+    display: flex;
+    justify-content: center;
+    font-size:4rem;
+    color: black;
+    font-weight: bold;
+}
+
+.form-label{
+    font-size: 13px;
+    color: var(--dark-green);
+    font-weight: 600;
+}
+
+.form-control{
+    border-color: var(--green);
+}
+
+.form-control:focus{
+    border-color: var(--light-green);
+    box-shadow: none;
+}
+
+.card-body{ 
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 30px; 
+}
+
+#submit{
+    width: 100%;
+    margin-top: 1rem;
+    color: white;
+    background-color: var(--green);
+    background-color: var(--green);
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+}
+
+#submit:hover{
+    background-color: var(--light-green);
+}
+
+#passwordHelp{
+    font-size: 12px;
+    color: var(--green);
+    font-weight: bold;
+}
+
+#emailHelp{
+    font-size: 12px;
+    color: var(--green);
+}
+
+.sign-up-message{
+    color: var(--light-green);
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+

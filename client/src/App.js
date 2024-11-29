@@ -1,17 +1,29 @@
-import Sidebar from './pages/Sidebar/Sidebar';
-import Footer from './pages/Footer/Footer';
-import Home from './pages/Home/Home';
-//import UsersList from './pages/Promotion/Promotion';
-import './App.css';
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Sidebar from "./pages/Sidebar/Sidebar";
+import Footer from "./pages/Footer/Footer";
+import Home from "./pages/Home/Home";
+import AlertBanner from "./pages/AlertBanner/AlertBanner";
+import Login from "./pages/Login/Login";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Sidebar />
-      <Home />
-      <Footer />
+      <Router>
+        <Routes>
+          <Route path="/" element={
+            <>
+          <AlertBanner />
+            <Sidebar />            
+            <Home />
+        <Footer />
+        </>            
+            } />
 
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

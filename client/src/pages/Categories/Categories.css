@@ -9,8 +9,8 @@
 
 .category {
   padding: 10px 20px;
-  border: 2px solid #b5b5b5;
-  border-radius: 2rem;
+  border: 1px solid var(--green);
+  border-radius: 2rem; 
   background-color: white;
   cursor: pointer;
   font-size: 1.1rem;
@@ -19,5 +19,5 @@
 }
 
 .category:hover {
-  background-color: #f0f0f0;
+  background-color: #f1f5ed;
 }

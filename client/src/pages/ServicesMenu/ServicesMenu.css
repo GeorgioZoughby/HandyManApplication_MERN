@@ -10,7 +10,7 @@
     padding: 0;
     gap: 50px;
     justify-content: center;
-    border-bottom: 1px solid #ee6231;
+    border-bottom: 1px solid var(--dark-green);
 }
 
 .services-item {
@@ -19,17 +19,17 @@
     align-items: center;
     flex-direction: column;
     gap: 5px;
-    color: #524C42;
+    color: var(--dark-green);
     margin-bottom: 1rem;
 }
 
 .services-item:hover {
-    color: #b5b5b5;
+    color: var(--middle-green);
     transition: all 100ms ease;
 }
 
 .services-item.active {
-    color: #ee6231;
+    color: var(--middle-green);
 }
 
 .services-item i {
