@@ -14,14 +14,24 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-          <AlertBanner />
-            <Sidebar />            
-            <Home />
-        <Footer />
-        </>            
-            } />
+              <AlertBanner />
+              <Sidebar />
+              <Home />
+              <Footer />
+            </>
+          } />
 
           <Route path="/login" element={<Login />} />
+          <Route path="/services" element=
+          {
+            <>
+              <AlertBanner />
+              <Sidebar />
+              <Home />
+              <Footer />
+            </>
+          }
+          />
         </Routes>
       </Router>
     </div>

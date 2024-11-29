@@ -10,7 +10,7 @@
     padding: 0;
     gap: 50px;
     justify-content: center;
-    border-bottom: 1px solid var(--dark-green);
+    border-bottom: 1px solid #171616;
 }
 
 .services-item {
@@ -18,8 +18,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 5px;
-    color: var(--dark-green);
+    gap: 15px;
+    color: #171616;
     margin-bottom: 1rem;
 }
 
@@ -33,9 +33,10 @@
 }
 
 .services-item i {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
 }
 
 .services-item span {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    font-weight: 500;
 }
