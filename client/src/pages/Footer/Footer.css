@@ -4,6 +4,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+
 }
 
 #root {
@@ -13,5 +14,9 @@ body {
 }
 
 .footer {
-    background-color: #171616;
+    border-top: 1px solid var(--light-green);
+    color: var(--dark-green);
+    font-weight: 600;
+    margin-top:1rem;
+    padding-top: 1rem;
 }

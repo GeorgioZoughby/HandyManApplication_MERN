@@ -1,13 +1,13 @@
 .sidebar {
     width: 100vw;
     height: 100px;
-    background-color: #171616;
-    color: white;
+    background-color: #fff;
+    color: var(--dark-green);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid lightgrey;
 }
 
 .sidebar-logo {
@@ -56,8 +56,8 @@
 
 
 #cta-button{
-    color: var(--light-green);
-    border: 1px solid var(--light-green);
+    color: var(--middle-green);
+    border: 1px solid var(--middle-green);
     border-radius: 10px;
     padding: 10px 20px;
     font-weight: 600;

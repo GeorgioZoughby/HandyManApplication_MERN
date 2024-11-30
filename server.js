@@ -9,6 +9,7 @@ const bookingRoutes = require('./backend/routes/bookings');
 const reviewRoutes = require('./backend/routes/reviews');
 const categoryRoutes = require('./backend/routes/categories');
 const searchRoutes = require('./backend/routes/search');
+const subserviceRoutes = require('./backend/routes/subservices');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -31,9 +32,7 @@ app.use('/api/bookings', bookingRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/search', searchRoutes);
-
-
-
+app.use('/api/subservices', subserviceRoutes);
 
 
 app.listen(PORT, () => {

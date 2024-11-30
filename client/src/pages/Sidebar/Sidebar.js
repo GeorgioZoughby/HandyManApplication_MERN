@@ -1,6 +1,6 @@
 import React from 'react';
 import './Sidebar.css';
-import logo from '../../assets/Logo.png';
+import logo from '../../assets/dark_logo.png';
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
@@ -37,7 +37,7 @@ const Sidebar = () => {
       </ul>
 
       <div className="sidebar-actions">
-        <button className="sidebar-button" id="login-button"><Link to="/login">Login</Link></button>
+        <button className="sidebar-button" id="login-button"><Link to="/login">Log in</Link></button>
         <Link to="/signupTasker"><button className="sidebar-button" id="cta-button">Become a Tasker</button></Link>
       </div>
     </div>

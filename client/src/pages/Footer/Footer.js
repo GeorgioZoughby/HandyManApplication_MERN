@@ -1,11 +1,11 @@
 import React from "react";
-import Logo from "../../assets/Logo.png";
+import Logo from "../../assets/dark_logo.png";
 import "./Footer.css";
 
 const Footer = () => {
     return (
-        <footer className="footer relative z-10  pb-10 pt-20 dark:bg-dark lg:pb-20 lg:pt-[120px]">
-            <div className="container mx-auto px-4">
+        <footer className="footer relative z-10  pb-10 pt-20 lg:pb-20 lg:pt-[120px]">
+            <div className="container mx-auto px-4 ">
                 <div className="flex flex-wrap justify-between">
                     <div className="w-full mb-8 px-4 sm:w-1/2 lg:w-1/4">
                         <div>
@@ -13,10 +13,10 @@ const Footer = () => {
                                 <img src={Logo} alt="Logo" className="dark:hidden max-w-full" />
                                 <img src={Logo} alt="Logo" className="hidden dark:block max-w-full" />
                             </a>
-                            <p className="text-base text-body-color dark:text-white mb-4">
+                            <p className="text-base text-body-color">
                                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem totam rem aperiam.
                             </p>
-                            <p className="text-sm text-body-color dark:text-white flex items-center">
+                            <p className="text-sm text-body-color  flex items-center">
                                 <span className="mr-3 text-primary">
                                     <svg
                                         width="20"
@@ -58,14 +58,14 @@ const Footer = () => {
 
                     {/* Social Media */}
                     <div className="w-full px-4 sm:w-1/2 lg:w-1/4">
-                        <h4 className="mb-6 text-lg font-semibold text-white dark:text-white">Follow Us</h4>
+                        <h4 className="mb-6 text-lg font-semibold ">Follow Us</h4>
                         <div className="flex space-x-3">
                             <SocialIcon />
                             <SocialIcon />
                             <SocialIcon />
                             <SocialIcon />
                         </div>
-                        <p className="mt-4 text-base text-body-color dark:text-white">
+                        <p className="mt-4 text-base text-body-color ">
                             &copy; 2025 TailGrids. All Rights Reserved.
                         </p>
                     </div>
@@ -77,12 +77,11 @@ const Footer = () => {
 
 export default Footer;
 
-// Link Group Component
 const LinkGroup = ({ children, header }) => {
     return (
         <div className="w-full px-4 sm:w-1/2 lg:w-1/4">
             <div>
-                <h4 className="mb-6 text-lg font-semibold text-white dark:text-white">{header}</h4>
+                <h4 className="mb-6 text-lg font-semibold text-white ">{header}</h4>
                 <ul className="space-y-2">{children}</ul>
             </div>
         </div>
@@ -95,7 +94,7 @@ const NavLink = ({ link, label }) => {
         <li>
             <a
                 href={link}
-                className="text-base text-body-color hover:text-primary dark:text-white"
+                className="text-base text-body-color hover:text-primary "
             >
                 {label}
             </a>
@@ -103,7 +102,6 @@ const NavLink = ({ link, label }) => {
     );
 };
 
-// Social Icon Component
 const SocialIcon = () => {
     return (
         <a

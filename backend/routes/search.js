@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Category = require('../models/Category');
+const SubService = require('../models/SubService');
 
-// Search API Endpoint
 router.get('/', async (req, res) => {
     const query = req.query.q || '';
 
@@ -11,7 +10,7 @@ router.get('/', async (req, res) => {
     }
 
     try {
-        const results = await Category.find({ name: { $regex: query, $options: 'i' } }).limit(10);
+        const results = await SubService.find({ subservice_name: { $regex: query, $options: 'i' } }).limit(10);
         res.json(results);
     } catch (error) {
         console.error('Error fetching search results:', error);

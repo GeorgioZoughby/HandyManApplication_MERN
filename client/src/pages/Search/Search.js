@@ -50,8 +50,8 @@ const SearchBar = () => {
             {results.length > 0 && query.trim() !== '' && (
                 <ul className="search-results" style={{ listStyleType: 'none' }}>
                     {results.map((result) => (
-                        <a href="#" key={result._id} onClick={() => setQuery(result.name)}>
-                            <li className="results">{result.name}</li>
+                        <a href={`booking/${result._id}`} key={result._id} onClick={() => setQuery(result.subservice_name)}>
+                            <li className="results">{result.subservice_name}</li>
                         </a>
                     ))}
                 </ul>

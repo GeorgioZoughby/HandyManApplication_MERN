@@ -1,7 +1,6 @@
 import React from "react";
 import "./Home.css";
 import ServicesMenu from "../ServicesMenu/ServicesMenu"
-import Categories from "../Categories/Categories"
 import Search from "../Search/Search"
 
 const Home = () => {
@@ -14,7 +13,6 @@ const Home = () => {
                 <Search />
             </div>
             <ServicesMenu />
-            <Categories />
         </div>
     );
 }

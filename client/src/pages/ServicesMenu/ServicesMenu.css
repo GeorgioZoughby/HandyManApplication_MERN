@@ -8,9 +8,9 @@
     list-style-type: none;
     display: flex;
     padding: 0;
-    gap: 50px;
+    gap: 100px;
     justify-content: center;
-    border-bottom: 1px solid #171616;
+    border-bottom: 1px solid var(--middle-green);
 }
 
 .services-item {
@@ -19,7 +19,7 @@
     align-items: center;
     flex-direction: column;
     gap: 15px;
-    color: #171616;
+    color: var(--dark-green);
     margin-bottom: 1rem;
 }
 
@@ -39,4 +39,28 @@
 .services-item span {
     font-size: 1rem;
     font-weight: 500;
+}
+
+.subservices-container{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 10px;
+    width: 50%;
+    justify-content: center;
+}
+
+.subservice-item{
+    padding: 10px 20px;
+    border: 1px solid var(--green);
+    border-radius: 2rem;
+    background-color: white;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.category:hover {
+    background-color: #f1f5ed;
 }
