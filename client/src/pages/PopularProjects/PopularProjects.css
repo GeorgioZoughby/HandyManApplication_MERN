@@ -1,0 +1,65 @@
+.popular-projects-container{
+    display: flex;
+    gap:50px;
+    margin-left: 40%;
+    margin-bottom:50px;
+}
+
+.popular-projects-container .title{
+    font-size: 2rem;
+    font-weight: 800;
+    color: black;
+    text-align: left;
+}
+
+.row{
+    display: flex;
+}
+
+.popular-projects{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 2.5rem;
+}
+
+.popular-card{
+    background-color: #f5f7f6;
+    width:250px;
+    border-radius: 20px;
+    box-shadow: 0 8px 5px rgba(0, 0, 0, 0.1);
+}
+
+.popular-card:hover{
+    cursor: pointer;
+}
+
+.popular-card-image{
+    width:100%;
+    height: auto;
+    border-radius: 20px 20px 0 0;
+}
+
+.popular-card-image img{
+    width:100%;
+    height: auto;
+    border-radius: 20px 20px 0 0;
+}
+
+
+.popular-card-info{
+    padding:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:20px;
+}
+
+.popular-card-info h3{
+    font-size: 1rem;
+    font-weight: 800;
+    color: black;
+}
+
+

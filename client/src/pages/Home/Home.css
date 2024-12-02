@@ -4,13 +4,15 @@
     flex-direction: column;
     gap: 30px;
     background-color: #fff9f5;
+    padding-bottom: 4rem;
 }
 
 .white-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     background-color: #fff;
 }
-
-
 
 .title {
     font-size: 3rem;
@@ -25,5 +27,6 @@
 .row {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 

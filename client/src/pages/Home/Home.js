@@ -4,20 +4,28 @@ import ServicesMenu from "../ServicesMenu/ServicesMenu"
 import Search from "../Search/Search"
 import ServiceCard from "../ServiceCard/ServiceCard";
 import Achievements from "../Achievements/Achievements";
+import PopularProjects from "../PopularProjects/PopularProjects";
 
 const Home = () => {
     return (
-        <div className="center-container">
-            <div className="row">
-                <h1 className="title">Book trusted help for home tasks</h1>
+        <>
+            <div className="center-container">
+                <div className="row">
+                    <h1 className="title">Book trusted help for home tasks</h1>
+                </div>
+                <div className="row">
+                    <Search />
+                </div>
+                <ServicesMenu />
+                <ServiceCard />
+                <Achievements />
             </div>
-            <div className="row">
-                <Search />
+            <div className="white-container">
+                <div className="row">
+                    <PopularProjects />
+                </div>
             </div>
-            <ServicesMenu />
-            <ServiceCard />
-            <Achievements />
-        </div>
+        </>
     );
 }
 

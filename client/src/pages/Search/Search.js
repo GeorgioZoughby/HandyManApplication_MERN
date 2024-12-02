@@ -4,7 +4,7 @@ import './Search.css';
 const SearchBar = () => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [, setLoading] = useState(false);
     let activeFetchId = 0;
 
     const handleSearch = async (event) => {
