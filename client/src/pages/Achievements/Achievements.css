@@ -1,0 +1,23 @@
+.achievements-container{
+    display: flex;
+    gap:100px;
+}
+
+.achievement-title{
+    color: black;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.achievement-numbers{
+    color: var(--green);
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.achievement-details{
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}

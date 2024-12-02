@@ -3,6 +3,7 @@ import "./Home.css";
 import ServicesMenu from "../ServicesMenu/ServicesMenu"
 import Search from "../Search/Search"
 import ServiceCard from "../ServiceCard/ServiceCard";
+import Achievements from "../Achievements/Achievements";
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             </div>
             <ServicesMenu />
             <ServiceCard />
+            <Achievements />
         </div>
     );
 }
