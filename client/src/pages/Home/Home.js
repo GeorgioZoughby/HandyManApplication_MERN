@@ -5,6 +5,7 @@ import Search from "../Search/Search"
 import ServiceCard from "../ServiceCard/ServiceCard";
 import Achievements from "../Achievements/Achievements";
 import PopularProjects from "../PopularProjects/PopularProjects";
+import CustomersFeedback from "../CustomersFeedback/CustomersFeedback";
 
 const Home = () => {
     return (
@@ -23,6 +24,9 @@ const Home = () => {
             <div className="white-container">
                 <div className="row">
                     <PopularProjects />
+                </div>
+                <div className="row">
+                    <CustomersFeedback />
                 </div>
             </div>
         </>

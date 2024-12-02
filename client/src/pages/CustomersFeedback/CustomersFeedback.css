@@ -1,0 +1,56 @@
+.feedbacks-container{
+    display: flex;
+    gap:50px;
+    margin-left: 40%;
+    margin-bottom:50px;
+}
+
+.feedbacks-container .title{
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--middle-green);
+    text-align: left;
+    width: 100%;
+}
+
+.row{
+    display: flex;
+}
+
+.feedback-projects{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 2.5rem;
+}
+
+.feedback-card{
+    width:300px;
+    height: 250px;
+    border-radius: 20px;
+}
+
+.feedback-card:hover{
+    cursor: pointer;
+}
+
+
+.feedback-card-info{
+    padding:15px;
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.feedback-card-info h3{
+    font-size: 1rem;
+    font-weight: 800;
+    color: black;
+}
+
+.stars{
+    color: #f3c930;
+    font-size: 1.1rem;
+    margin-left: 10px;
+}
+
