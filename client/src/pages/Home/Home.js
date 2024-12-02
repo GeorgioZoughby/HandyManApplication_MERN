@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 import ServicesMenu from "../ServicesMenu/ServicesMenu"
 import Search from "../Search/Search"
+import ServiceCard from "../ServiceCard/ServiceCard";
 
 const Home = () => {
     return (
@@ -13,6 +14,7 @@ const Home = () => {
                 <Search />
             </div>
             <ServicesMenu />
+            <ServiceCard />
         </div>
     );
 }

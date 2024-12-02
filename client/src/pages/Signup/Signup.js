@@ -25,8 +25,8 @@ const Signup = () => {
             newErrors.phoneNumber = "Enter a valid phone number (8-15 digits).";
         }
 
-        if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = "Enter a valid email address.";
+        if (formData.email_address && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_address)) {
+            newErrors.email_address = "Enter a valid email address.";
         }
 
         if (!formData.password) {
@@ -89,15 +89,15 @@ const Signup = () => {
                                 {errors.phoneNumber && <div className="invalid-feedback">{errors.phoneNumber}</div>}
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="email" className="form-label">Email address</label>
+                                <label htmlFor="email_address" className="form-label">Email Address</label>
                                 <input
                                     type="text"
-                                    className={`form-control ${errors.email ? "is-invalid" : ""}`}
-                                    id="email"
-                                    value={formData.email}
+                                    className={`form-control ${errors.email_address ? "is-invalid" : ""}`}
+                                    id="email_address"
+                                    value={formData.email_address}
                                     onChange={handleInputChange}
                                 />
-                                {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+                                {errors.email_address && <div className="invalid-feedback">{errors.email_address}</div>}
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="password" className="form-label">Password*</label>
