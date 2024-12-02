@@ -1,10 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Sidebar from "./pages/Sidebar/Sidebar";
+import Navbar from "./pages/Navbar/Navbar";
 import Footer from "./pages/Footer/Footer";
 import Home from "./pages/Home/Home";
 import AlertBanner from "./pages/AlertBanner/AlertBanner";
 import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import "./App.css";
 
 function App() {
@@ -15,18 +17,20 @@ function App() {
           <Route path="/" element={
             <>
               <AlertBanner />
-              <Sidebar />
+              <Navbar />
               <Home />
               <Footer />
             </>
           } />
 
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/forgot_password" element={<ForgotPassword />} />
           <Route path="/services" element=
           {
             <>
               <AlertBanner />
-              <Sidebar />
+              <Navbar />
               <Home />
               <Footer />
             </>

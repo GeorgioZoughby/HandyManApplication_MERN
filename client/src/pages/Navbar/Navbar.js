@@ -1,19 +1,19 @@
 import React from 'react';
-import './Sidebar.css';
+import './Navbar.css';
 import logo from '../../assets/dark_logo.png';
 import { Link } from "react-router-dom";
 
-const Sidebar = () => {
+const Navbar = () => {
   return (
-    <div className="sidebar">
+    <div className="navbar">
       <Link to="/">
       <img
         src={logo}
         alt="Logo"
-        className="sidebar-logo"
+        className="navbar-logo"
       />
       </Link>
-      <ul className="sidebar-list">
+      <ul className="navbar-list">
         <Link to="/">
         <li>
           <i className="bi bi-house-door-fill"></i> Home
@@ -36,12 +36,12 @@ const Sidebar = () => {
         </Link>
       </ul>
 
-      <div className="sidebar-actions">
-        <button className="sidebar-button" id="login-button"><Link to="/login">Log in</Link></button>
-        <Link to="/signupTasker"><button className="sidebar-button" id="cta-button">Become a Tasker</button></Link>
+      <div className="navbar-actions">
+        <button className="navbar-button" id="login-button"><Link to="/login">Log in</Link></button>
+        <Link to="/signupTasker"><button className="navbar-button" id="cta-button">Become a Tasker</button></Link>
       </div>
     </div>
   );
 };
 
-export default Sidebar;
+export default Navbar;
