@@ -6,6 +6,7 @@ import ServiceCard from "../ServiceCard/ServiceCard";
 import Achievements from "../Achievements/Achievements";
 import PopularProjects from "../PopularProjects/PopularProjects";
 import CustomersFeedback from "../CustomersFeedback/CustomersFeedback";
+import Steps from "../Steps/Steps";
 
 const Home = () => {
     return (
@@ -27,6 +28,9 @@ const Home = () => {
                 </div>
                 <div className="row">
                     <CustomersFeedback />
+                </div>
+                <div className="row" style={{ backgroundColor: "#fefce3"}}>
+                <Steps />
                 </div>
             </div>
         </>
