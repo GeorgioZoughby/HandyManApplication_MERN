@@ -8,7 +8,7 @@
 .feedbacks-container .title{
     font-size: 2rem;
     font-weight: 800;
-    color: var(--middle-green);
+    color: var(--dark-green);
     text-align: left;
     width: 100%;
 }
@@ -30,10 +30,6 @@
     border-radius: 20px;
 }
 
-.feedback-card:hover{
-    cursor: pointer;
-}
-
 
 .feedback-card-info{
     padding:15px;
@@ -43,14 +39,43 @@
 }
 
 .feedback-card-info h3{
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 800;
     color: black;
 }
 
+.feedback-card-info p{
+    font-size: 1rem;
+    color: black;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-clamp: 6;
+    -webkit-line-clamp: 6;
+    line-height: 1.5;
+    max-height: calc(6 * 1.5em);
+}
+
 .stars{
     color: #f3c930;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     margin-left: 10px;
 }
 
+.feedback-details{
+    display: flex;
+    justify-content: space-between;
+}
+
+.feedback-details-date{
+    color: var(--green);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.feedback-details-category{
+    color: var(--green);
+    font-size: 1rem;
+    font-weight: 800;
+}

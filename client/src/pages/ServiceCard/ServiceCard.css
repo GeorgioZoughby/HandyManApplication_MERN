@@ -3,11 +3,12 @@
     display: flex;
     width: 60vw;
     height: 570px;
-    background-color: #eef7fd;
+    background-color: #e5fee9;
     border-radius: 20px;
     margin-top: 1rem;
     position: relative;
     align-items: center;
+    box-shadow: 0 0 10px #c4f5cc;
 }
 
 .image-container {

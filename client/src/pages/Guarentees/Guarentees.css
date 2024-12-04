@@ -1,0 +1,48 @@
+.guarentees-container{
+    display: flex;
+    gap: 150px;
+    margin-left: 41%;
+    margin-bottom: 50px;
+}
+
+.guarentees-title{
+    color: var(--green);
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.guarentees-title i{
+    margin-left: 0.5rem;
+}
+
+.guarentees-text{
+    color: black;
+    font-size: 1.1rem;
+    text-wrap: wrap;
+    width:300px;
+}
+
+.guarentees-details{
+    display:flex;
+    flex-direction: column;
+    gap:25px;
+}
+
+.guarentees-pledge-title{
+    display: flex;
+    gap: 50px;
+    margin-left: 40%;
+    margin-bottom: 50px;
+    margin-top: 5rem;
+}
+
+.guarentees-pledge{
+    font-size: 2rem;
+    color: black;
+    font-weight:1000;
+}
+
+.green-text{
+    font-size: 2rem;
+    color: var(--green);
+    font-weight: 1000;
+}

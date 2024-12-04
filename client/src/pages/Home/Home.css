@@ -3,7 +3,7 @@
     justify-content: center;
     flex-direction: column;
     gap: 30px;
-    background-color: #fff9f5;
+    background-color: #f7f7f7;
     padding-bottom: 4rem;
 }
 
@@ -17,9 +17,9 @@
 .title {
     font-size: 3rem;
     font-weight: 1000;
-    color: var(--green);
+    color: var(--dark-green);
     margin-top: 4rem;
-    width: 600px;
+    width: 30vw;
     text-wrap: wrap;
     text-align: center;
 }
@@ -30,3 +30,11 @@
     align-items: center;
 }
 
+
+@media screen and (max-width: 768px){
+    .title {
+        font-size: 1.7rem;
+        width: 80vw;
+    }
+    
+}

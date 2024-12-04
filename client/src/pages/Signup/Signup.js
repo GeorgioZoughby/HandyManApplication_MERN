@@ -20,7 +20,7 @@ const Signup = () => {
             newErrors.fullName = "Full Name is required.";
         }
 
-        const phoneRegex = /^[0-9]{8,15}$/;
+        const phoneRegex = /^{[0-9]{8,15}$/;
         if (!phoneRegex.test(formData.phoneNumber)) {
             newErrors.phoneNumber = "Enter a valid phone number (8-15 digits).";
         }

@@ -7,6 +7,7 @@ import Achievements from "../Achievements/Achievements";
 import PopularProjects from "../PopularProjects/PopularProjects";
 import CustomersFeedback from "../CustomersFeedback/CustomersFeedback";
 import Steps from "../Steps/Steps";
+import Guarentees from "../Guarentees/Guarentees";
 
 const Home = () => {
     return (
@@ -27,10 +28,13 @@ const Home = () => {
                     <PopularProjects />
                 </div>
                 <div className="row">
-                    <CustomersFeedback />
+                    <Guarentees />
                 </div>
                 <div className="row" style={{ backgroundColor: "#fefce3"}}>
-                <Steps />
+                    <Steps />
+                </div>
+                <div className="row">
+                    <CustomersFeedback />
                 </div>
             </div>
         </>

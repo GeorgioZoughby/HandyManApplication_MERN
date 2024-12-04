@@ -1,6 +1,10 @@
+.navbar-container{
+    width: 100vw;
+    height: 80px;
+}
 .navbar {
     width: 100vw;
-    height: 100px;
+    height: 80px;
     background-color: #fff;
     color: var(--dark-green);
     display: flex;
@@ -8,10 +12,12 @@
     justify-content: space-between;
     padding: 0 20px;
     border-bottom: 1px solid lightgrey;
+    z-index: 100;
+    position: fixed;
 }
 
 .navbar-logo {
-    width: 100px;
+    width: 80px;
     height: auto;
 }
 

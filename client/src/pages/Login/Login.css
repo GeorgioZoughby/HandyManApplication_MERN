@@ -4,7 +4,7 @@
     margin: 0;
     height: 100vh;
     padding: 0 24px;
-    background-image: url('../../assets/login.jpg');
+    background-image: url('../../assets/login.png');
     background-repeat: no-repeat;
     background-size: cover;
     font-family: 'Poppins', sans-serif;
@@ -18,7 +18,8 @@
 }
 
 .my-card{
-    height: 60vh;
+    margin-top: 5rem;
+    height: 55vh;
     width: 25vw;
     background-color: white;
     border-radius: 20px;

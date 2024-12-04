@@ -1,6 +1,6 @@
 import React from "react";
 import "./ServiceCard.css";
-import image from "../../assets/login.jpg";
+import image from "../../assets/assembly_card.webp";
 
 
 const ServiceCard = () => {

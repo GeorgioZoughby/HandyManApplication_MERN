@@ -1,5 +1,6 @@
 .popular-projects-container{
     display: flex;
+    flex-wrap: wrap;
     gap:50px;
     margin-left: 40%;
     margin-bottom:50px;
@@ -12,9 +13,6 @@
     text-align: left;
 }
 
-.row{
-    display: flex;
-}
 
 .popular-projects{
     display: flex;
@@ -32,6 +30,7 @@
 
 .popular-card:hover{
     cursor: pointer;
+    background-color: #fff;
 }
 
 .popular-card-image{
