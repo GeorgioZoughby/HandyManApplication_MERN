@@ -4,7 +4,7 @@ const PopularService = require('../models/PopularServices');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    const PopularServices = await PopularService.find();
+    const PopularServices = await PopularService.find().populate('subService');
     res.json(PopularServices);
 });
 

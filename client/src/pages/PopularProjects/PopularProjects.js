@@ -1,98 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PopularProjects.css";
-import mount_tv_image from "../../assets/mount_tv.webp";
-import furniture_assembly_image from "../../assets/popular_services/furniture_assembly.webp";
-import hang_pictures_image from "../../assets/hang_pictures.webp";
-import minor_plumbing_image from "../../assets/minor_plumbing.webp";
+import  { Link } from "react-router-dom";
 
 
 const PopularProjects = () => {
+
+    const getImageUrl = (imagePath) => {
+        return `/assets/popular_services/${imagePath}`;
+    };
+
+    const [services, setServices] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/api/popularservices');
+                const data = await response.json();
+                setServices(data);
+            } catch (error) {
+                console.error("Error fetching popular services:", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    const renderCards = (servicesArray) => {
+        return servicesArray.map((service, index) => (
+            <Link to={`/booking/${service.subService?._id}`}>
+            <div className="popular-card" key={index}>
+                <div className="popular-card-image">
+                    <img src={getImageUrl(service.imageURL)} alt={service.subService?.subservice_name ?? "No Photo"} />
+                </div>
+                <div className="popular-card-info">
+                    <h3>{service.subService?.subservice_name ?? "No Data"}</h3>
+                    <p>{`Projects starting at ${service.price} $`}</p>
+                </div>
+            </div>
+            </Link>
+        ));
+    };
+
+    const chunkedServices = [];
+    for (let i = 0; i < services.length; i += 4) {
+        chunkedServices.push(services.slice(i, i + 4));
+    }
+
     return (
         <>
             <div className="popular-projects-container">
-                <div className="title">
-                    Popular Projects
-                </div>
+                <div className="title">Popular Projects</div>
             </div>
-            <div className="popular-projects-container">
-                <div className="popular-card">
-                    <div className="popular-card-image">
-                        <img src={furniture_assembly_image} alt="Furniture Assembly" />
-                    </div>
-                    <div className="popular-card-info">
-                        <h3>Furniture Assembly</h3>
-                        <p>Projects starting at 49$</p>
-                    </div>
+            {chunkedServices.map((group, index) => (
+                <div className="popular-projects-container" key={index}>
+                    {renderCards(group)}
                 </div>
-                <div className="popular-card">
-                    <div className="popular-card-image">
-                        <img src={mount_tv_image} alt="Mount TV" />
-                    </div>
-                    <div className="popular-card-info">
-                        <h3>Mount a TV</h3>
-                        <p>Projects starting at 49$</p>
-                    </div>
-                </div>
-                <div className="popular-card">
-                    <div className="popular-card-image">
-                        <img src={hang_pictures_image} alt="Hang Pictures" />
-                    </div>
-                    <div className="popular-card-info">
-                        <h3>Mount Art or Shelves</h3>
-                        <p>Projects starting at 24$</p>
-                    </div>
-                </div>
-                <div className="popular-card">
-                    <div className="popular-card-image">
-                        <img src={minor_plumbing_image} alt="Minor Plumbing" />
-                    </div>
-                    <div className="popular-card-info">
-                        <h3>Project Title</h3>
-                        <p>Projects starting at 49$</p>
-                    </div>
-                </div>                                              
-            </div>
-            <div className="popular-projects-container">
-                <div className="popular-card">
-                    <div className="popular-card-image">
-                        <img src={furniture_assembly_image} alt="Furniture Assembly" />
-                    </div>
-                    <div className="popular-card-info">
-                        <h3>Furniture Assembly</h3>
-                        <p>Projects starting at 49$</p>
-                    </div>
-                </div>
-                <div className="popular-card">
-                    <div className="popular-card-image">
-                        <img src={mount_tv_image} alt="Mount TV" />
-                    </div>
-                    <div className="popular-card-info">
-                        <h3>Mount a TV</h3>
-                        <p>Projects starting at 49$</p>
-                    </div>
-                </div>
-                <div className="popular-card">
-                    <div className="popular-card-image">
-                        <img src={hang_pictures_image} alt="Hang Pictures" />
-                    </div>
-                    <div className="popular-card-info">
-                        <h3>Mount Art or Shelves</h3>
-                        <p>Projects starting at 24$</p>
-                    </div>
-                </div>
-                <div className="popular-card">
-                    <div className="popular-card-image">
-                        <img src={minor_plumbing_image} alt="Minor Plumbing" />
-                    </div>
-                    <div className="popular-card-info">
-                        <h3>Minor Plumbing Repairs</h3>
-                        <p>Projects starting at 49$</p>
-                    </div>
-                </div>
-            </div>          
+            ))}
         </>
-    )
+    );
 };
 
 export default PopularProjects;
-

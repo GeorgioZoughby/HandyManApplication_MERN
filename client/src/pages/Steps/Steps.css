@@ -5,7 +5,8 @@
     height: 570px;
     background-color: #fefce3;
     border-radius: 20px;
-    margin-top: 1rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
     position: relative;
     align-items: center;
 }

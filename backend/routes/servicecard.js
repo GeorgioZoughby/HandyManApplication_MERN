@@ -4,7 +4,8 @@ const ServiceCard = require('../models/ServiceCard');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-    const servicecards = await ServiceCard.find();
+    const servicecards = await ServiceCard.find()
+        .populate('service_card_id');
     res.json(servicecards);
 });
 

@@ -8,6 +8,8 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import AllServices from "./pages/AllServices/AllServices";
+import AllServicesHero from "./pages/AllServices/AllServicesHero";
+import MultiStepForm from "./pages/Booking/Booking";
 import "./App.css";
 
 function App() {
@@ -27,11 +29,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/forgot_password" element={<ForgotPassword />} />
+          <Route path="/booking/:id" element={<MultiStepForm />} />
           <Route path="/services" element=
           {
             <>
               <AlertBanner />
               <Navbar />
+              <AllServicesHero />
               <AllServices />
               <Footer />
             </>

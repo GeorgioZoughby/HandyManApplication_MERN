@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Home.css";
-import ServicesMenu from "../ServicesMenu/ServicesMenu"
-import Search from "../Search/Search"
-import ServiceCard from "../ServiceCard/ServiceCard";
+import ServicesMenu from "../ServicesMenu/ServicesMenu";
+import Search from "../Search/Search";
 import Achievements from "../Achievements/Achievements";
 import PopularProjects from "../PopularProjects/PopularProjects";
 import CustomersFeedback from "../CustomersFeedback/CustomersFeedback";
 import Steps from "../Steps/Steps";
 import Guarentees from "../Guarentees/Guarentees";
 
-
 const Home = () => {
+    const stepsRef = useRef(null);
+
     return (
         <>
             <div className="center-container">
@@ -21,7 +21,6 @@ const Home = () => {
                     <Search />
                 </div>
                 <ServicesMenu />
-                <ServiceCard />
                 <Achievements />
             </div>
             <div className="white-container">
@@ -31,8 +30,10 @@ const Home = () => {
                 <div className="row">
                     <Guarentees />
                 </div>
-                <div className="row" style={{ backgroundColor: "#fefce3"}}>
-                    <Steps />
+                <div className="row" style={{ backgroundColor: "#fefce3" }}>
+                    <div id="steps-section">
+                        <Steps ref={stepsRef} />
+                    </div>
                 </div>
                 <div className="row">
                     <CustomersFeedback />
@@ -40,6 +41,6 @@ const Home = () => {
             </div>
         </>
     );
-}
+};
 
 export default Home;
