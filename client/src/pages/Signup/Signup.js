@@ -20,7 +20,7 @@ const Signup = () => {
             newErrors.fullName = "Full Name is required.";
         }
 
-        const phoneRegex = /^{[0-9]{8,15}$/;
+        const phoneRegex = /^[0-9]{8,15}$/;
         if (!phoneRegex.test(formData.phoneNumber)) {
             newErrors.phoneNumber = "Enter a valid phone number (8-15 digits).";
         }
@@ -49,11 +49,33 @@ const Signup = () => {
         setFormData({ ...formData, [id]: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (validate()) {
-            console.log("Form submitted successfully:", formData);
+            try {
+                const response = await fetch("api/users/", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: formData.fullName,
+                        phone: formData.phoneNumber,
+                        email: formData.email_address,
+                        password: formData.password,
+                    }),
+                });
+
+                const result = await response.json();
+                if (response.ok) {
+                    window.location.href = "/login";
+                } else {
+                    console.error('Error:', result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
         }
     };
 
@@ -121,7 +143,7 @@ const Signup = () => {
                                 />
                                 {errors.confirmPassword && <div className="invalid-feedback">{errors.confirmPassword}</div>}
                             </div>
-                            <button type="submit" className="btn btn-primary" id="submit">Sign Up</button>
+                            <button type="submit" className="btn btn-primary" id="submit" onClick={handleSubmit}>Sign Up</button>
                             <div className="mb-3 mt-6">
                                 <p style={{ color: "black" }}>Already have an account? <Link to="/login"><span className="sign-up-message">Login</span></Link></p>
                             </div>

@@ -7,7 +7,7 @@ function ListProducts() {
     const [page, setPage] = useState(1);
     const [pageCount, setPageCount] = useState(0);
     const { data, error } = useSWR(
-        `http://localhost:5000/api/services?page=${page}`,
+        `api/services?page=${page}`,
         fetcher
     );
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "./PopularProjects.css";
 import mount_tv_image from "../../assets/mount_tv.webp";
-import furniture_assembly_image from "../../assets/furniture_assembly.webp";
+import furniture_assembly_image from "../../assets/popular_services/furniture_assembly.webp";
 import hang_pictures_image from "../../assets/hang_pictures.webp";
 import minor_plumbing_image from "../../assets/minor_plumbing.webp";
 

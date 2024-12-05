@@ -28,6 +28,10 @@
     color: var(--dark-green);
     border-radius: 10px;
     font-weight: 400;
+    position: absolute;
+    width: 700px;
+    background-color: white;
+    z-index: 100;
 }
 
 

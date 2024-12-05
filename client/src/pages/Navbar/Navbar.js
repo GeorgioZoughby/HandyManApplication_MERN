@@ -1,9 +1,16 @@
 import React from 'react';
 import './Navbar.css';
 import logo from '../../assets/dark_logo.png';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    navigate("/login");
+  };
   return (
     <div className="navbar-container">
       <div className="navbar">
@@ -38,7 +45,15 @@ const Navbar = () => {
         </ul>
 
         <div className="navbar-actions">
-          <button className="navbar-button" id="login-button"><Link to="/login">Log in</Link></button>
+          {
+            localStorage.getItem("token") ? (
+              <button className="navbar-button" id="logout-button" onClick={handleLogout}>Log Out</button>
+            ) : (
+              <button className="navbar-button" id="login-button">
+                  <Link to="/login">Log In</Link>
+              </button>
+            )
+          }
           <Link to="/signupTasker"><button className="navbar-button" id="cta-button">Become a Tasker</button></Link>
         </div>
       </div>

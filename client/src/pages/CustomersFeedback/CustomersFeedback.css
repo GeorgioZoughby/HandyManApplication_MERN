@@ -20,12 +20,12 @@
 .feedback-projects{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 100px;
     margin-left: 2.5rem;
 }
 
 .feedback-card{
-    width:300px;
+    width:400px;
     height: 250px;
     border-radius: 20px;
 }
@@ -36,12 +36,15 @@
     display: flex;
     flex-direction: column;
     gap:20px;
+    width: auto;
+
 }
 
 .feedback-card-info h3{
     font-size: 1.2rem;
     font-weight: 800;
     color: black;
+    text-wrap: nowrap;
 }
 
 .feedback-card-info p{
@@ -55,6 +58,7 @@
     -webkit-line-clamp: 6;
     line-height: 1.5;
     max-height: calc(6 * 1.5em);
+    min-height: calc(3 * 1.5em);
 }
 
 .stars{
@@ -66,12 +70,14 @@
 .feedback-details{
     display: flex;
     justify-content: space-between;
+    gap:10px;
 }
 
 .feedback-details-date{
     color: var(--green);
     font-size: 1rem;
     font-weight: 800;
+    text-wrap: nowrap;
 }
 
 .feedback-details-category{

@@ -15,14 +15,14 @@ const ServicesMenu = () => {
     useEffect(() => {
         const fetchServicesAndSubservices = async () => {
             try {
-                const servicesResponse = await fetch("http://localhost:5000/api/services");
+                const servicesResponse = await fetch("/api/services");
                 if (!servicesResponse.ok) {
                     throw new Error("Failed to fetch services");
                 }
                 const servicesData = await servicesResponse.json();
                 setServices(servicesData);
 
-                const subservicesResponse = await fetch("http://localhost:5000/api/subservices");
+                const subservicesResponse = await fetch("/api/subservices");
                 if (!subservicesResponse.ok) {
                     throw new Error("Failed to fetch subservices");
                 }
