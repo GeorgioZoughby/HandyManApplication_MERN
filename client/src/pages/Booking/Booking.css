@@ -20,9 +20,26 @@
     background-color: #fff;
 }
 
+
 body{
   background-color: #f5f7f6;
 }
+
+.form-check-input {
+  border: 2px solid var(--green);
+  background-color: #fff;
+}
+
+.form-check-input:checked {
+  background-color: var(--dark-green);
+  border-color: var(--dark-green);
+}
+
+.form-check-input:focus {
+  border-color: var(--dark-green);
+  box-shadow: none;
+}
+
 
 .form-detail-title h3{
     color: var(--dark-green);
@@ -40,10 +57,99 @@ body{
 .card-form-info{
   background-color: #fff;
   border-radius: 20px;
-  border: 1px solid lightgray;
-  padding: 0px;
-  width: 50vw;
-  height: 50vh
+  border: 1px solid rgb(164, 164, 164);
+  width: 35vw;
+  min-height: 50vh;
+  height: fit-content;
+  padding: 1.5rem;
+}
+
+.tasker-filtering-options{
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid rgb(164, 164, 164);
+  width: 20vw;
+  min-height: 50vh;
+  height: fit-content;
+  padding: 1.5rem;
+}
+
+.task-filter
+{
+  border-bottom: 1px solid lightgray;
+}
+
+.task-filter-option{
+  border: 1px solid var(--dark-green);
+  padding: 5px 12px;
+  font-weight: 500;
+  background-color: #fff;
+  color: black;
+  border-radius: 20px;
+  width: 150px;
+}
+
+.task-filter-option:hover {
+  background-color: #d9ffec;
+  transition: 300ms all ease;
+}
+
+.tasker-person{
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid rgb(164, 164, 164);
+  width: 45vw;
+  min-height: 50vh;
+  height: fit-content;
+  padding: 1.5rem;
+  display: flex;
+  gap:70px;
+}
+
+.tasker-fullname{
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.tasker-price {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.tasker-nationality{
+  padding: 2px 7px;
+  background-color: #f5f7f6;
+  color: var(--dark-green);
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-radius: 5px;
+  width: fit-content;
+  text-align: center;
+}
+
+.tasker-aboutme{
+  background-color: #f5f7f6;
+  color: black;
+  padding: 20px;
+  max-width: 550px;
+  border-radius: 5px;
+
+}
+
+
+.tasker-policy{
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid rgb(164, 164, 164);
+  width: 20vw;
+  height: fit-content;
+  padding: 1.5rem;
+}
+
+#task_details{
+  resize: none;
 }
 
 .navbar-progress img{
@@ -73,6 +179,30 @@ body{
   top: 50%;
   left: 0;
 }
+
+.tasker-image{
+  height: 170px;
+  width: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.choose-tasker{
+  background-color: var(--dark-green);
+  color: white;
+  border: 1px solid var(--dark-green);
+  width: 170px;
+  border-radius: 20px;
+  padding: 7px 10px;
+  margin-top: 1rem;
+}
+
+.choose-tasker:hover{
+  background-color: var(--middle-green);
+  transition: 100ms all ease;
+  border-color: var(--middle-green);
+}
+
 
 .step-container:after {
   content: '';
@@ -136,7 +266,6 @@ body{
 .buttons-container {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 30px; 
 }
 
@@ -154,9 +283,15 @@ body{
   transform: scale(0.98);
 }
 
-.button-style:disabled {
-  background: #f3e7f3;
+.button-style:hover{
   color: var(--dark-green);
+  background-color: var(--light-green);
+  transition: 300ms all ease;
+}
+
+.button-style:disabled {
+  background: #d5d7d6;
+  color: black;
   cursor: not-allowed;
 }
 
