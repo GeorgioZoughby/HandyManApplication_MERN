@@ -75,3 +75,12 @@
     background-color: var(--light-green);
 }
 
+@media screen and (max-width: 768px){
+    .signup-card{
+        width: 80vw;
+    }
+    .signup-container {
+        background-image: none;
+        background-color: #0d795f;
+    }
+}

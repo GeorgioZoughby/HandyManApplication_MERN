@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/dark_logo.png';
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate("/login");
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   const handleHowItWorksClick = (event) => {
@@ -19,36 +24,35 @@ const Navbar = () => {
   return (
     <div className="navbar-container">
       <div className="navbar">
+        <div className="phone-menu" onClick={toggleMenu}>
+          <i className="bi bi-list"></i>
+        </div>
         <Link to="/">
           <img src={logo} alt="Logo" className="navbar-logo" />
         </Link>
-        <ul className="navbar-list">
+        <ul className={`navbar-list ${menuOpen ? "open" : ""}`}>
           <Link to="/">
-            <li>
+            <li onClick={() => setMenuOpen(false)}>
               <i className="bi bi-house-door-fill"></i> Home
             </li>
           </Link>
           <Link to="/services">
-            {window.scrollTo(0, 0)}
-            <li>
+            <li onClick={() => setMenuOpen(false)}>
               <i className="bi bi-briefcase-fill"></i> Services
             </li>
           </Link>
           <Link to="/faq">
-            {window.scrollTo(0, 0)}
-            <li>
-              <i class="bi bi-question-circle-fill"></i>FAQ
-              </li>
+            <li onClick={() => setMenuOpen(false)}>
+              <i className="bi bi-question-circle-fill"></i> FAQ
+            </li>
           </Link>
           <Link to="/aboutus">
-            {window.scrollTo(0, 0)}
-            <li>
-              <i class="bi bi-info-circle-fill"></i>About Us
+            <li onClick={() => setMenuOpen(false)}>
+              <i className="bi bi-info-circle-fill"></i> About Us
             </li>
           </Link>
         </ul>
-
-        <div className="navbar-actions">
+        <div className={`navbar-actions${menuOpen ? " open" : ""}`}>
           {localStorage.getItem("token") ? (
             <button className="navbar-button" id="logout-button" onClick={handleLogout}>Log Out</button>
           ) : (

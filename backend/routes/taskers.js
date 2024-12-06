@@ -26,71 +26,34 @@ router.get('/by-filters', async (req, res) => {
             return res.status(400).json({ message: 'Service ID is required' });
         }
 
-        let query = {
-            "services.serviceId": serviceId,
-        };
+        let query = { "services.serviceId": serviceId };
 
         if (minPrice && maxPrice) {
-            query = {
-                ...query,
-                "services.price": { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) }
-            };
+            query["services.price"] = { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) };
         }
 
         if (nationalities) {
             const nationalityFilter = nationalities.split(',');
-
-            let nationalityCondition = {};
-
-            if (nationalityFilter.includes('lebanese')) {
-                nationalityCondition.nationality = 'Lebanon';
-            }
-
-            if (nationalityFilter.includes('international')) {
-                nationalityCondition.nationality = { $ne: 'Lebanon' };
-            }
-
-            if (nationalityFilter.includes('lebanese') && nationalityFilter.includes('international')) {
-                nationalityCondition = {};
-            }
-
-            if (Object.keys(nationalityCondition).length > 0) {
-                query = { ...query, ...nationalityCondition };
+            if (!nationalityFilter.includes('lebanese') || !nationalityFilter.includes('international')) {
+                query.nationality = nationalityFilter.includes('lebanese') ? 'Lebanon' : { $ne: 'Lebanon' };
             }
         }
 
         if (genders) {
             const genderArray = genders.split(',');
-
-            let genderCondition = {};
-
-            if (genderArray.includes('male')) {
-                genderCondition.gender = 'Male';
-            }
-
-            if (genderArray.includes('female')) {
-                genderCondition.gender = 'Female';
-            }
-
-            if (genderArray.includes('male') && genderArray.includes('female')) {
-                genderCondition = {};
-            }
-
-            if (Object.keys(genderCondition).length > 0) {
-                query = { ...query, ...genderCondition };
+            if (!genderArray.includes('male') || !genderArray.includes('female')) {
+                query.gender = genderArray.includes('male') ? 'Male' : 'Female';
             }
         }
+
+        const totalCount = await Tasker.countDocuments(query);
+        const pageCount = Math.ceil(totalCount / limit);
 
         const taskers = await Tasker.find(query)
             .skip((page - 1) * limit)
             .limit(parseInt(limit));
 
-        const updatedTaskers = taskers.map(tasker => {
-            tasker.services = tasker.services.filter(service => service.serviceId.toString() === serviceId);
-            return tasker;
-        });
-
-        res.json(updatedTaskers);
+        res.json({ taskers, pageCount });
     } catch (error) {
         console.error("Error fetching taskers by filters:", error);
         res.status(500).json({ message: 'Internal server error' });
@@ -101,21 +64,15 @@ router.get('/by-subservice/:subserviceID', async (req, res) => {
     try {
         const { page = 1, limit = 5 } = req.query;
         const subserviceID = req.params.subserviceID;
-        const count = await Tasker.countDocuments({ services: { $elemMatch: { serviceId: subserviceID } } });
-        const pageCount  = Math.ceil(count / limit);
 
-        const taskers = await Tasker.find({
-            services: { $elemMatch: { serviceId: subserviceID } }
-        })
+        const totalCount = await Tasker.countDocuments({ services: { $elemMatch: { serviceId: subserviceID } } });
+        const pageCount = Math.ceil(totalCount / limit);
+
+        const taskers = await Tasker.find({ services: { $elemMatch: { serviceId: subserviceID } } })
             .skip((page - 1) * limit)
             .limit(parseInt(limit));
 
-        const updatedTaskers = taskers.map(tasker => {
-            tasker.services = tasker.services.filter(service => service.serviceId.toString() === subserviceID);
-            return tasker;
-        });
-
-        res.json(updatedTaskers);
+        res.json({ taskers, pageCount });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });

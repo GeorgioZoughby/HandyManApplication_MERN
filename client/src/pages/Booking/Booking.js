@@ -16,8 +16,13 @@ const steps = [
 
 
 const MultiStepForm = () => {
+    const [paymentDetails, setPaymentDetails] = useState({
+        taskerRate: "0.00",
+        trustAndSupportFee: "0.00",
+        totalAmount: "0.00"
+    });    
     const [page, setPage] = useState(1);
-    const [pageCount, setPageCount] = useState(1);
+    const [pageCount, setPageCount] = useState(2);
     const handlePrevious = () => {
         if (page > 1) {
             setPage(page - 1);
@@ -34,19 +39,17 @@ const MultiStepForm = () => {
     useEffect(() => {
         const fetchSubservices = async () => {
             try {
-                const response = await fetch(`/api/subservices/${id}&page=${page}`);
+                const response = await fetch(`/api/subservices/${id}?page=${page}`);
                 const data = await response.json();
-                setSubservices(data);
-                console.log(data);
+                setSubservices(data.subservices || []);
+                setPageCount(data.pageCount || 1);
             } catch (error) {
                 console.error("Error fetching subservices:", error);
             }
         };
 
-        if (id) {
-            fetchSubservices();
-        }
-    }, [id]);
+        if (id) fetchSubservices();
+    }, [id, page]);
 
     const getImageUrl = (imagePath) => {
         return `/assets/taskers/${imagePath}`;
@@ -82,46 +85,34 @@ const MultiStepForm = () => {
 
     useEffect(() => {
         const fetchTaskers = async () => {
-            const { male, female } = selectedGender;
-            const { lebanese, international } = selectedNationalities;
-            const [minPrice, maxPrice] = value;
-            let url = `/api/taskers/by-subservice/${id}&page=${page}`;
-
-            const genderFilter = [];
-            if (male) genderFilter.push('male');
-            if (female) genderFilter.push('female');
-
-            const nationalityFilter = [];
-            if (lebanese) nationalityFilter.push('lebanese');
-            if (international) nationalityFilter.push('international');
-
-            const filters = [];
-            if (genderFilter.length > 0) {
-                filters.push(`genders=${genderFilter.join(',')}`);
-            }
-            if (nationalityFilter.length > 0) {
-                filters.push(`nationalities=${nationalityFilter.join(',')}`);
-            }
-
-            filters.push(`minPrice=${minPrice}`);
-            filters.push(`maxPrice=${maxPrice}`);
-
-            if (filters.length > 0) {
-                url = `/api/taskers/by-filters?${filters.join('&')}&serviceId=${id}&page=${page}`;
-            }
-
             try {
-                console.log(url);
+                const { male, female } = selectedGender;
+                const { lebanese, international } = selectedNationalities;
+                const [minPrice, maxPrice] = value;
+
+                let url = `/api/taskers/by-subservice/${id}?page=${page}`;
+                const filters = [];
+
+                if (male || female) filters.push(`genders=${[male && 'male', female && 'female'].filter(Boolean).join(',')}`);
+                if (lebanese || international) filters.push(`nationalities=${[lebanese && 'lebanese', international && 'international'].filter(Boolean).join(',')}`);
+                filters.push(`minPrice=${minPrice}`, `maxPrice=${maxPrice}`);
+
+                if (filters.length) url = `/api/taskers/by-filters?${filters.join('&')}&serviceId=${id}&page=${page}`;
+
+                console.log("Fetching URL:", url);
+
                 const response = await fetch(url);
                 const data = await response.json();
-                setTaskers(data);
+                setTaskers(data.taskers || []);
+                setPageCount(data.pageCount || 1); // Update page count from response
             } catch (error) {
                 console.error("Error fetching taskers:", error);
             }
         };
 
         fetchTaskers();
-    }, [selectedGender, selectedNationalities, value, id]);
+    }, [selectedGender, selectedNationalities, value, id, page]);
+
 
     const valuetext = (value) => {
         return `$${value}`;
@@ -150,6 +141,21 @@ const MultiStepForm = () => {
     }, [id]);
 
     const nextStep = () => setActiveStep((prev) => Math.min(prev + 1, steps.length));
+    const ToPayment = (price) => {
+        const trustAndSupportFee = price * 0.2; // 20%
+        const totalAmount = price + trustAndSupportFee;
+
+        const paymentDetails = {
+            taskerRate: price.toFixed(2),
+            trustAndSupportFee: trustAndSupportFee.toFixed(2),
+            totalAmount: totalAmount.toFixed(2)
+        };
+        setPaymentDetails(paymentDetails);
+
+        console.log(paymentDetails);
+
+        setActiveStep((prev) => Math.min(prev + 1, steps.length));
+    };
     const prevStep = () => setActiveStep((prev) => Math.max(prev - 1, 1));
 
     const totalSteps = steps.length;
@@ -209,7 +215,7 @@ const MultiStepForm = () => {
                                     required
                                 />
                             </div>
-                            <div className="mt-3 ml-20 mr-96">
+                            <div className="mt-3 ml-20 md:ml-20 mr-40 md:mr-96">
                                 <label htmlFor="floor" className="form-label">Floor #</label>
                                 <input
                                     type="text"
@@ -282,7 +288,7 @@ const MultiStepForm = () => {
                         <i className="bi bi-people-fill"></i>
                         <h3>Filter and sort to find your Tasker. Then view their availability to request your date and time.</h3>
                     </div>
-                    <div className="middle flex justify-center gap-8 mt-5">
+                    <div className="middle-container mt-5">
                         <div className="flex flex-col gap-8">
                             <div className="tasker-filtering-options">
                                 <div className="task-filter">
@@ -292,7 +298,6 @@ const MultiStepForm = () => {
                                             <button className="task-filter-option">Today</button>
                                             <button className="task-filter-option">Within 3 days</button>
                                             <button className="task-filter-option mb-4">Within a week</button>
-                                            <button className="task-filter-option mb-4">Choose Date</button>
                                         </div>
                                     </div>
                                 </div>
@@ -429,7 +434,11 @@ const MultiStepForm = () => {
                                     <div className="tasker-person" key={tasker._id}>
                                         <div className="flex flex-col gap-3">
                                             <img src={getImageUrl(tasker.imageURL)} alt={tasker.name} className="tasker-image" />
-                                            <button className="choose-tasker">Select & Continue</button>
+                                            <button
+                                                onClick={() => ToPayment(tasker.services[0]?.price)}
+                                                className="choose-tasker">
+                                                Select & Continue
+                                            </button>
                                             <span className="italic text-gray-500 text-xs w-48 text-wrap text-center">
                                                 You can chat with your Tasker, adjust task details, or change task time after booking.
                                             </span>
@@ -453,10 +462,18 @@ const MultiStepForm = () => {
                                     <p>No taskers available for this filter combination.</p>
                                 </div>
                             )}
-                            <div className="pagination">
-                                <button disabled={page===1} className="pagination-button" onClick={handlePrevious}>Previous</button>
-                                <button disabled={page === pageCount} className="pagination-button" onClick={handleNext}>Next</button>
-                            </div>                            
+                            <div className="flex justify-end gap-2">
+                                <button
+                                    disabled={page === 1}
+                                    style={{ display: page === 1 ? 'none' : 'inline-block' }}
+                                    className="pagination-button"
+                                    onClick={handlePrevious}
+                                >
+                                    <i class="bi bi-arrow-left-short"></i>
+                                </button>
+                                <span className="pagination-button" id="current_page">{page}</span>
+                                <button disabled={page === pageCount} className="pagination-button" onClick={handleNext}><i class="bi bi-arrow-right-short"></i></button>
+                            </div>
                         </div>
                     </div>
                 </>
@@ -467,26 +484,26 @@ const MultiStepForm = () => {
                         <div className="payment-method-container">
                             <div className="flex flex-col gap-4">
                                 <span className="payment-title text-black font-bold text-3xl">
-                                Confirm Details                                
+                                    Confirm Details
                                 </span>
 
                                 <span className="payment-subtitle text-green-900 font-bold text-xl">
                                     Deposit Details
                                 </span>
-                                <div className="flex justify-between">  
-                                <span className="payment-subtitle text-black  text-base">
-                                    Tasker Hourly Rate
-                                </span>  
-                                <span className="payment-subtitle text-black  text-base">
-                                    5.00 $
-                                </span>                                  
-                                </div> 
+                                <div className="flex justify-between">
+                                    <span className="payment-subtitle text-black  text-base">
+                                        Tasker Hourly Rate
+                                    </span>
+                                    <span className="payment-subtitle text-black  text-base">
+                                        {paymentDetails?.taskerRate} $
+                                    </span>
+                                </div>
                                 <div className="flex justify-between">
                                     <span className="payment-subtitle text-black  text-base">
                                         Trust & Support Fee
                                     </span>
                                     <span className="payment-subtitle text-black  text-base">
-                                        5.00 $
+                                        {paymentDetails?.trustAndSupportFee} $
                                     </span>
                                 </div>
                                 <div className="flex justify-between">
@@ -494,36 +511,41 @@ const MultiStepForm = () => {
                                         Total Amount
                                     </span>
                                     <span className="payment-subtitle text-black font-bold  text-base">
-                                        10.00 $
+                                        {paymentDetails?.totalAmount} $
                                     </span>
-                                </div>                                   
-                                <span className="b-gray-bottom"></span>                                                                                 
+                                </div>
+                                <span className="b-gray-bottom"></span>
                                 <span className="payment-subtitle text-green-900 font-bold text-xl">
-                                Payment Confirmation
-                            </span>
+                                    Payment Confirmation
+                                </span>
                                 <span className="payment-subtitle text-black italic text-sm">
                                     You will be billed in the amount of your Tasker's hourly rate and our commission fee.
                                     Don't worry - this amount will be deducted from your task's total amount when your task is completed!
-                                </span>    
+                                </span>
                                 <CardForm />
+                                <div className="flex justify-center">
+                                    <Link to="/home">
+                                    <button className="mt-4 text-nowrap text-white p-3 bg-green-800 rounded-3xl">Confirm & Pay</button>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-                    </div>                  
+                    </div>
                 </div >
             )}
 
-            <div className="buttons-container mt-4">
+            <div className="buttons-container mt-4 mb-4">
                 <button
                     className="button-style"
                     onClick={prevStep}
                     disabled={activeStep === 1}
                 >
-                    Previous
+                    Back
                 </button>
                 <button
                     className="button-style"
                     onClick={nextStep}
-                    disabled={activeStep === totalSteps}
+                    disabled={activeStep === totalSteps || activeStep === 2}
                 >
                     Next
                 </button>

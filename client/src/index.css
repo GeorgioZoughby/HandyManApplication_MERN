@@ -16,4 +16,9 @@ button{
   text-decoration: none;
 }
 
-
+@media screen and (max-width: 768px){
+  /* Add any other styles you need for small screens here */
+  body {
+    overflow-x: hidden;
+  }
+}

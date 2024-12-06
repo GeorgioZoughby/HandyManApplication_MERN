@@ -14,6 +14,8 @@ import AboutUsContent from "./pages/AboutUs/AboutUs";
 import MultiStepForm from "./pages/Booking/Booking";
 import FaqPage from "./pages/FAQ/FAQ";
 import FAQImage from "./pages/FAQ/FAQPhoto";
+import PrivacyHero from "./pages/PrivacyPolicy/PrivacyPolicyHero";
+import PrivacyContent from "./pages/PrivacyPolicy/PrivacyPolicy";
 import "./App.css";
 
 function App() {
@@ -66,7 +68,18 @@ function App() {
                 <Footer />
               </>
             }
-          />          
+          />   
+          <Route path="/termsconditions" element=
+            {
+              <>
+                <AlertBanner />
+                <Navbar />
+                <PrivacyHero />
+                <PrivacyContent />
+                <Footer />
+              </>
+            }
+          />       
         </Routes>
       </Router>
     </div>

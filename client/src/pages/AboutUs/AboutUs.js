@@ -24,4 +24,4 @@ const AboutUsContent = () => {
             );
 };
 
-            export default AboutUsContent;
+export default AboutUsContent;

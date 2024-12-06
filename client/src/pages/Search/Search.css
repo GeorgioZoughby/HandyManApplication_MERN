@@ -58,3 +58,15 @@
     color: #171616;
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px){
+    .search {
+        width: 80vw;
+    }
+    .search-input {
+        width: 80vw;
+    }
+    .search-results {
+        width: 80vw;
+    }
+}

@@ -132,3 +132,63 @@
     font-size: 1.1rem;
     color: var(--dark-green);
 }
+
+@media screen and (max-width: 768px){
+    .services-menu {
+        width: 100%;
+    }
+
+    .services-list {
+        gap: 10px;
+    }
+
+    .services-item {
+        gap: 5px;
+    }
+
+    .services-item i {
+        font-size: 1.2rem;
+    }
+
+    .services-item span {
+        font-size: 0.8rem;
+    }
+
+    .subservices-container {
+        width: 100%;
+    }
+
+    .service-card {
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .image-container {
+        padding: 40px 40px 40px 40px;
+    }
+
+    .service-card-content {
+        width: 60%;
+        height: fit-content;
+        left: 5%;
+    }
+
+    .service-card-title {
+        font-size: 1rem;
+    }
+
+    .service-card-description {
+        gap: 10px;
+    }
+
+    .service-card-description i {
+        font-size: 0.7rem;
+    }
+
+    .service-card-description p {
+        font-size: 0.7rem;
+    }
+}
