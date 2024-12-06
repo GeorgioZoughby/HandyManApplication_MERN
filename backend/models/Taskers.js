@@ -1,4 +1,3 @@
-const { getAccordionDetailsUtilityClass } = require('@mui/material');
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -24,10 +23,6 @@ const taskersSchema = new Schema({
     required: true
   },
   nationality: {
-    type: String,
-    required: true
-  },
-  aboutme: {
     type: String,
     required: true
   },

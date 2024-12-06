@@ -28,6 +28,8 @@ app.use('/api/feedbacks', require('./backend/routes/feedback'));
 app.use('/api/popularservices', require('./backend/routes/popularservices'));
 app.use('/api/servicecard', require('./backend/routes/servicecard'));
 app.use('/api/taskers', require('./backend/routes/taskers'));
+app.use('/api/taskersavailability', require('./backend/routes/taskersavailability'));
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
