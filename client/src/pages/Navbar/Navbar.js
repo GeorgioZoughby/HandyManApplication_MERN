@@ -34,13 +34,16 @@ const Navbar = () => {
               <i className="bi bi-briefcase-fill"></i> Services
             </li>
           </Link>
-          <li onClick={handleHowItWorksClick}>
-            <i className="bi bi-clipboard-check-fill"></i> How it works
-          </li>
-          <Link to="/contact-us">
+          <Link to="/faq">
             {window.scrollTo(0, 0)}
             <li>
-              <i className="bi bi-telephone-fill"></i> Contact Us
+              <i class="bi bi-question-circle-fill"></i>FAQ
+              </li>
+          </Link>
+          <Link to="/aboutus">
+            {window.scrollTo(0, 0)}
+            <li>
+              <i class="bi bi-info-circle-fill"></i>About Us
             </li>
           </Link>
         </ul>
@@ -53,9 +56,15 @@ const Navbar = () => {
               <Link to="/login">Log In</Link>
             </button>
           )}
-          <Link to="/signupTasker">
-            <button className="navbar-button" id="cta-button">Become a Tasker</button>
-          </Link>
+          {localStorage.getItem("token") ? (
+            <Link to="/services">
+              <button className="navbar-button" id="cta-button">Book a Tasker Now</button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <button className="navbar-button" id="cta-button">Book a Tasker Now</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

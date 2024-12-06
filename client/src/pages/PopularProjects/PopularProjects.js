@@ -27,17 +27,33 @@ const PopularProjects = () => {
 
     const renderCards = (servicesArray) => {
         return servicesArray.map((service, index) => (
-            <Link to={`/booking/${service.subService?._id}`}>
-            <div className="popular-card" key={index}>
-                <div className="popular-card-image">
-                    <img src={getImageUrl(service.imageURL)} alt={service.subService?.subservice_name ?? "No Photo"} />
-                </div>
-                <div className="popular-card-info">
-                    <h3>{service.subService?.subservice_name ?? "No Data"}</h3>
-                    <p>{`Projects starting at ${service.price} $`}</p>
-                </div>
-            </div>
-            </Link>
+            <React.Fragment key={index}>
+                {localStorage.getItem("token") ? (
+                    <Link to={`/booking/${service.subService?._id}`}>
+                        <div className="popular-card">
+                            <div className="popular-card-image">
+                                <img src={getImageUrl(service.imageURL)} alt={service.subService?.subservice_name ?? "No Photo"} />
+                            </div>
+                            <div className="popular-card-info">
+                                <h3>{service.subService?.subservice_name ?? "No Data"}</h3>
+                                <p>{`Projects starting at ${service.price} $`}</p>
+                            </div>
+                        </div>
+                    </Link>
+                ) : (
+                    <Link to="/login">
+                        <div className="popular-card">
+                            <div className="popular-card-image">
+                                <img src={getImageUrl(service.imageURL)} alt={service.subService?.subservice_name ?? "No Photo"} />
+                            </div>
+                            <div className="popular-card-info">
+                                <h3>{service.subService?.subservice_name ?? "No Data"}</h3>
+                                <p>{`Projects starting at ${service.price} $`}</p>
+                            </div>
+                        </div>
+                    </Link>
+                )}
+            </React.Fragment>
         ));
     };
 

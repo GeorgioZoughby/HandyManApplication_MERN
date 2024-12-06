@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import dark_logo from '../../assets/dark_logo.png';
-
 const Footer = () => {
     return (
         <section className="py-10 bg-white sm:pt-16 lg:pt-24 border-t border-lightgray">
@@ -12,7 +11,7 @@ const Footer = () => {
 
                         <ul className="flex items-center space-x-3 mt-2">
                             <li>
-                                <a href="#" title="" className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-10 h-10 hover:bg-blue-600 focus:bg-blue-600">
+                                <a href="#" title="" className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-10 h-10 hover:bg-green-900 focus:bg-green-900">
                                     <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0 0 14.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z"></path>
                                     </svg>
@@ -20,7 +19,7 @@ const Footer = () => {
                             </li>
 
                             <li>
-                                <a href="#" title="" className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-10 h-10 hover:bg-blue-600 focus:bg-blue-600">
+                                <a href="#" title="" className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-10 h-10 hover:bg-green-900 focus:bg-green-900">
                                     <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                         <path d="M11.999 7.377a4.623 4.623 0 1 0 0 9.248 4.623 4.623 0 0 0 0-9.248zm0 7.627a3.004 3.004 0 1 1 0-6.008 3.004 3.004 0 0 1 0 6.008z"></path>
                                         <circle cx="16.806" cy="7.207" r="1.078"></circle>
@@ -31,11 +30,11 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="#" title="" className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-10 h-10 hover:bg-blue-600 focus:bg-blue-600">
+                                <a href="#" title="" className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-10 h-10 hover:bg-green-900 focus:bg-green-900">
                                     <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 462.799"><path fill="#fff" fill-rule="nonzero" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z" /></svg>                                </a>
                             </li>
                             <li>
-                                <a href="linkedin" title="" className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-10 h-10 hover:bg-blue-600 focus:bg-blue-600">
+                                <a href="linkedin" title="" className="flex items-center justify-center text-white transition-all duration-200 bg-gray-800 rounded-full w-10 h-10 hover:bg-green-900 focus:bg-green-900">
                                     <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 512"><path fill="#fff" d="M474.919 0H38.592C17.72 0 0 16.504 0 36.841V475.14C0 495.496 11.629 512 32.492 512h436.327C489.718 512 512 495.496 512 475.14V36.841C512 16.504 495.809 0 474.919 0zM195.043 195.043h68.928v35.136h.755c10.505-18.945 41.541-38.177 79.921-38.177 73.655 0 94.214 39.108 94.214 111.538v135.321h-73.148V316.883c0-32.427-12.947-60.883-43.227-60.883-36.768 0-54.295 24.889-54.295 65.758v117.103h-73.148V195.043zM73.139 438.861h73.148V195.043H73.139v243.818zm82.289-329.148c0 25.258-20.457 45.715-45.715 45.715-25.258 0-45.715-20.457-45.715-45.715 0-25.258 20.457-45.715 45.715-45.715 25.258 0 45.715 20.457 45.715 45.715z" /></svg>
                                 </a>
                             </li>
@@ -43,64 +42,61 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Company</p>
+                        <p className="text-sm font-semibold tracking-widest text-gray-600 uppercase">Quick Links</p>
 
                         <ul className="mt-6 space-y-4">
                             <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> About </a>
+                                <a href="/aboutus" title="" style={{ textDecoration: 'none' }}
+                                    onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                                    onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'} className="flex text-base text-black transition-all"> About Us </a>
                             </li>
 
                             <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Features </a>
+                                <a href="/faq" title="" style={{ textDecoration: 'none' }}
+                                    onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                                    onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'} className="flex text-base text-black transition-all"> FAQ </a>
                             </li>
 
                             <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Works </a>
-                            </li>
-
-                            <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Career </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Help</p>
-
-                        <ul className="mt-6 space-y-4">
-                            <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Customer Support </a>
-                            </li>
-
-                            <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Delivery Details </a>
-                            </li>
-
-                            <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Terms & Conditions </a>
-                            </li>
-
-                            <li>
-                                <a href="#" title="" className="flex text-base text-black transition-all duration-200 hover:text-blue-600 focus:text-blue-600"> Privacy Policy </a>
+                                <a href="/termsconditions" style={{ textDecoration: 'none' }}
+                                    onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                                    onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'} title="" className="flex text-base text-black"> Privacy Policy </a>
                             </li>
                         </ul>
                     </div>
 
                     <div className="col-span-2 md:col-span-1 lg:col-span-2 lg:pl-8">
-                        <p className="text-sm font-semibold tracking-widest text-gray-400 uppercase">Subscribe to newsletter</p>
+                        <p className="text-sm font-semibold tracking-widest text-gray-600 uppercase mb-4">Contact us</p>
+                        <div className='flex flex-col gap-3'>
+                            <span className="flex gap-4">
+                                <i className="bi bi-envelope-fill"></i>
+                                <a
+                                    href="mailto:info@quickfix.com"
+                                    style={{ textDecoration: 'none' }}
+                                    onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                                    onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
+                                >
+                                    info@quickfix.com
+                                </a>
+                            </span>
+                            <span className="flex gap-4">
+                                <i className="bi bi-telephone-fill"></i>
+                                <a
+                                    href="tel:+96181693206"
+                                    style={{ textDecoration: 'none' }}
+                                    onMouseOver={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                                    onMouseOut={(e) => e.currentTarget.style.textDecoration = 'none'}
+                                >
+                                    +961 81693206
+                                </a>
+                            </span>
 
-                        <form action="#" method="POST" className="mt-6">
-                            <div>
-                                <label for="email" className="sr-only">Email</label>
-                                <input type="email" name="email" id="email" placeholder="Enter your email" className="block w-full p-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600" />
-                            </div>
+                        </div>
 
-                            <button type="submit" className="inline-flex items-center justify-center px-6 py-4 mt-3 font-semibold text-white transition-all duration-200 bg-blue-600 rounded-md hover:bg-blue-700 focus:bg-blue-700">Subscribe</button>
-                        </form>
                     </div>
                 </div>
 
-                <hr className="p-3 mt-4 border-gray-200" />
+                <hr className="p-3 mt-4 border-gray-500" />
 
                 <p className="text-sm text-center text-gray-600">© Copyright 2024, All Rights Reserved by QuickFix</p>
             </div>

@@ -16,9 +16,11 @@ router.get('/', async (req, res) => {
     }
 });
 
+
+
 router.get('/by-filters', async (req, res) => {
     try {
-        const { nationalities, genders, serviceId, minPrice, maxPrice } = req.query;
+        const { nationalities, genders, serviceId, minPrice, maxPrice, page = 1, limit = 5 } = req.query;
 
         if (!serviceId) {
             return res.status(400).json({ message: 'Service ID is required' });
@@ -34,7 +36,6 @@ router.get('/by-filters', async (req, res) => {
                 "services.price": { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) }
             };
         }
-
 
         if (nationalities) {
             const nationalityFilter = nationalities.split(',');
@@ -80,24 +81,62 @@ router.get('/by-filters', async (req, res) => {
             }
         }
 
-        const taskers = await Tasker.find(query).populate('services.serviceId');
+        const taskers = await Tasker.find(query)
+            .skip((page - 1) * limit)
+            .limit(parseInt(limit));
 
-        res.json(taskers);
+        const updatedTaskers = taskers.map(tasker => {
+            tasker.services = tasker.services.filter(service => service.serviceId.toString() === serviceId);
+            return tasker;
+        });
+
+        res.json(updatedTaskers);
     } catch (error) {
         console.error("Error fetching taskers by filters:", error);
         res.status(500).json({ message: 'Internal server error' });
     }
 });
 
+router.get('/by-subservice/:subserviceID', async (req, res) => {
+    try {
+        const { page = 1, limit = 5 } = req.query;
+        const subserviceID = req.params.subserviceID;
+        const count = await Tasker.countDocuments({ services: { $elemMatch: { serviceId: subserviceID } } });
+        const pageCount  = Math.ceil(count / limit);
+
+        const taskers = await Tasker.find({
+            services: { $elemMatch: { serviceId: subserviceID } }
+        })
+            .skip((page - 1) * limit)
+            .limit(parseInt(limit));
+
+        const updatedTaskers = taskers.map(tasker => {
+            tasker.services = tasker.services.filter(service => service.serviceId.toString() === subserviceID);
+            return tasker;
+        });
+
+        res.json(updatedTaskers);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Server Error' });
+    }
+});
+
 
 router.get('/by-subservice/:subserviceID', async (req, res) => {
     try {
+        const subserviceID = req.params.subserviceID;
 
         const taskers = await Tasker.find({
-            services: { $elemMatch: { serviceId: req.params.subserviceID } }
+            services: { $elemMatch: { serviceId: subserviceID } }
         });
 
-        res.json(taskers);
+        const updatedTaskers = taskers.map(tasker => {
+            tasker.services = tasker.services.filter(service => service.serviceId.toString() === subserviceID);
+            return tasker;
+        });
+
+        res.json(updatedTaskers);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Server Error' });

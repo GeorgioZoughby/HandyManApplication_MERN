@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./AllServices.css";
 import Loader from "../Loader/Loader";
+import { Link } from "react-router-dom";
 
 const AllServices = () => {
     const [services, setServices] = useState([]);
@@ -68,7 +69,9 @@ const AllServices = () => {
                                 <div className="service-border"></div>
                                 <ul className="subservices-listing">
                                     {Array.isArray(service.subservices) && service.subservices.map((subservice) => (
+                                        <Link to={`/booking/${subservice._id}`}>
                                         <li key={subservice._id}>{subservice.subservice_name}</li>
+                                        </Link>
                                     ))}
                                 </ul>
                             </div>

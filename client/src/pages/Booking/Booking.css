@@ -74,6 +74,16 @@ body{
   padding: 1.5rem;
 }
 
+.payment-method-container{
+  background-color: #fff;
+    border-radius: 20px;
+    border: 1px solid rgb(164, 164, 164);
+    width: 30vw;
+    min-height: 50vh;
+    height: fit-content;
+    padding: 1.5rem;
+}
+
 .task-filter
 {
   border-bottom: 1px solid lightgray;
@@ -187,6 +197,10 @@ body{
   object-fit: cover;
 }
 
+.b-gray-bottom{
+  border-bottom: 1px solid lightgray;
+}
+
 .choose-tasker{
   background-color: var(--dark-green);
   color: white;
@@ -215,7 +229,10 @@ body{
   transform: translateY(-50%);
   left: 0;
 }
-
+.secure-payment{
+  height:70px;
+  width: 120px;
+}
 .step-wrapper {
   position: relative;
   z-index: 1;

@@ -4,6 +4,8 @@ import logo from "../../assets/dark_logo.png";
 import { Link, useParams } from "react-router-dom";
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import CardForm from "./CardForm";
+import { Card } from "@mui/material";
 
 const steps = [
     { label: 'Describe your task', step: 1 },
@@ -11,12 +13,28 @@ const steps = [
     { label: 'Confirm Payment', step: 3 },
 ];
 
+
+
 const MultiStepForm = () => {
+    const [page, setPage] = useState(1);
+    const [pageCount, setPageCount] = useState(1);
+    const handlePrevious = () => {
+        if (page > 1) {
+            setPage(page - 1);
+        }
+    }
+
+    const handleNext = () => {
+        if (page < pageCount) {
+            setPage(page + 1);
+        }
+    }
+
     const { id } = useParams();
     useEffect(() => {
         const fetchSubservices = async () => {
             try {
-                const response = await fetch(`/api/subservices/${id}`);
+                const response = await fetch(`/api/subservices/${id}&page=${page}`);
                 const data = await response.json();
                 setSubservices(data);
                 console.log(data);
@@ -66,8 +84,8 @@ const MultiStepForm = () => {
         const fetchTaskers = async () => {
             const { male, female } = selectedGender;
             const { lebanese, international } = selectedNationalities;
-            const [minPrice, maxPrice] = value; // Extract the price range from the state
-            let url = `/api/taskers/by-subservice/${id}`;
+            const [minPrice, maxPrice] = value;
+            let url = `/api/taskers/by-subservice/${id}&page=${page}`;
 
             const genderFilter = [];
             if (male) genderFilter.push('male');
@@ -85,12 +103,11 @@ const MultiStepForm = () => {
                 filters.push(`nationalities=${nationalityFilter.join(',')}`);
             }
 
-            // Add the price filter
             filters.push(`minPrice=${minPrice}`);
             filters.push(`maxPrice=${maxPrice}`);
 
             if (filters.length > 0) {
-                url = `/api/taskers/by-filters?${filters.join('&')}&serviceId=${id}`;
+                url = `/api/taskers/by-filters?${filters.join('&')}&serviceId=${id}&page=${page}`;
             }
 
             try {
@@ -126,7 +143,7 @@ const MultiStepForm = () => {
     const handleFloorChange = (event) => setFloor(event.target.value);
 
     useEffect(() => {
-        fetch(`/api/taskers/by-subservice/${id}`)
+        fetch(`/api/taskers/by-subservice/${id}&page=${page}`)
             .then((response) => response.json())
             .then((data) => setTaskers(data))
             .catch((error) => console.error("Error fetching taskers:", error));
@@ -432,18 +449,67 @@ const MultiStepForm = () => {
                                     </div>
                                 ))
                             ) : (
-                                    <div className="tasker-person  items-center justify-center">
+                                <div className="tasker-person  items-center justify-center">
                                     <p>No taskers available for this filter combination.</p>
                                 </div>
                             )}
+                            <div className="pagination">
+                                <button disabled={page===1} className="pagination-button" onClick={handlePrevious}>Previous</button>
+                                <button disabled={page === pageCount} className="pagination-button" onClick={handleNext}>Next</button>
+                            </div>                            
                         </div>
                     </div>
                 </>
             )}
             {activeStep === 3 && (
-                <div className="payment-info">
-                    <h2>Confirm Payment</h2>
-                </div>
+                <div className="flex gap-8 justify-center mt-8">
+                    <div className="flex flex-col gap-8">
+                        <div className="payment-method-container">
+                            <div className="flex flex-col gap-4">
+                                <span className="payment-title text-black font-bold text-3xl">
+                                Confirm Details                                
+                                </span>
+
+                                <span className="payment-subtitle text-green-900 font-bold text-xl">
+                                    Deposit Details
+                                </span>
+                                <div className="flex justify-between">  
+                                <span className="payment-subtitle text-black  text-base">
+                                    Tasker Hourly Rate
+                                </span>  
+                                <span className="payment-subtitle text-black  text-base">
+                                    5.00 $
+                                </span>                                  
+                                </div> 
+                                <div className="flex justify-between">
+                                    <span className="payment-subtitle text-black  text-base">
+                                        Trust & Support Fee
+                                    </span>
+                                    <span className="payment-subtitle text-black  text-base">
+                                        5.00 $
+                                    </span>
+                                </div>
+                                <div className="flex justify-between">
+                                    <span className="payment-subtitle text-black font-bold  text-base">
+                                        Total Amount
+                                    </span>
+                                    <span className="payment-subtitle text-black font-bold  text-base">
+                                        10.00 $
+                                    </span>
+                                </div>                                   
+                                <span className="b-gray-bottom"></span>                                                                                 
+                                <span className="payment-subtitle text-green-900 font-bold text-xl">
+                                Payment Confirmation
+                            </span>
+                                <span className="payment-subtitle text-black italic text-sm">
+                                    You will be billed in the amount of your Tasker's hourly rate and our commission fee.
+                                    Don't worry - this amount will be deducted from your task's total amount when your task is completed!
+                                </span>    
+                                <CardForm />
+                            </div>
+                        </div>
+                    </div>                  
+                </div >
             )}
 
             <div className="buttons-container mt-4">

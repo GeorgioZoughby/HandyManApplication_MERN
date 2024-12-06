@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Search.css';
-
+import {Link} from "react-router-dom";
 const SearchBar = () => {
     const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
@@ -50,9 +50,15 @@ const SearchBar = () => {
             {results.length > 0 && query.trim() !== '' && (
                 <ul className="search-results" style={{ listStyleType: 'none' }}>
                     {results.map((result) => (
-                        <a href={`booking/${result._id}`} key={result._id} onClick={() => setQuery(result.subservice_name)}>
-                            <li className="results">{result.subservice_name}</li>
-                        </a>
+                        <li key={result._id} className="results">
+                            {localStorage.getItem("token") ? (
+                                <Link to={`/booking/${result._id}`} onClick={() => setQuery(result.subservice_name)}>
+                                    {result.subservice_name}
+                                </Link>
+                            ) : (
+                                    <Link to="/login" onClick={() => setQuery(result.subservice_name)}>{result.subservice_name}</Link>
+                            )}
+                        </li>
                     ))}
                 </ul>
             )}

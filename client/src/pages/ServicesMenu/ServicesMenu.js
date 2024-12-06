@@ -88,9 +88,15 @@ const ServicesMenu = () => {
                 {filteredSubservices.length > 0 ? (
                     filteredSubservices.map((subservice) => (
                         <div key={subservice._id} className="subservice-item">
-                            <Link to={`/booking/${subservice._id}`}>
-                                <h3>{subservice.subservice_name}</h3>
-                            </Link>
+                            {localStorage.getItem("token") ? (
+                                <Link to={`/booking/${subservice._id}`}>
+                                    <h3>{subservice.subservice_name}</h3>
+                                </Link>
+                            ) : (
+                                <Link to="/login">
+                                    <h3>{subservice.subservice_name}</h3>
+                                </Link>
+                            )}
                         </div>
                     ))
                 ) : (

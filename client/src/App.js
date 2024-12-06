@@ -9,7 +9,11 @@ import Signup from "./pages/Signup/Signup";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import AllServices from "./pages/AllServices/AllServices";
 import AllServicesHero from "./pages/AllServices/AllServicesHero";
+import AboutUsHero from "./pages/AboutUs/AboutUsHero";
+import AboutUsContent from "./pages/AboutUs/AboutUs";
 import MultiStepForm from "./pages/Booking/Booking";
+import FaqPage from "./pages/FAQ/FAQ";
+import FAQImage from "./pages/FAQ/FAQPhoto";
 import "./App.css";
 
 function App() {
@@ -41,6 +45,28 @@ function App() {
             </>
           }
           />
+          <Route path="/faq" element=
+            {
+              <>
+                <AlertBanner />
+                <Navbar />
+                <FAQImage />
+                <FaqPage />
+                <Footer />
+              </>
+            }
+          />           
+          <Route path="/aboutus" element=
+            {
+              <>
+                <AlertBanner />
+                <Navbar />
+                <AboutUsHero />
+                <AboutUsContent />
+                <Footer />
+              </>
+            }
+          />          
         </Routes>
       </Router>
     </div>
